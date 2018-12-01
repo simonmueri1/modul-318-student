@@ -14,10 +14,26 @@ namespace SwissTransportApp
 
         }
 
-        public void findStation(object input)
+        public List<Station> FindStations(string input)
         {
-            Transport transport = new Transport();
-            var stations = transport.GetStations(input).Result.StationList;
+            ITransport transport = new Transport();
+            return transport.GetStations(input).StationList;
+        }
+
+        public bool IsStationAvailable(string station)
+        {   
+            StationFinder stationFinder = new StationFinder();
+            List<Station> stations = stationFinder.FindStations(station);
+            
+            if(stations.Count > 0)
+                return true;
+
+            return false;
+        }
+
+        public Station FindStation(string name)
+        {
+            return FindStations(name).First<Station>();
         }
     }
 }

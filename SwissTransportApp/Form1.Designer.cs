@@ -72,7 +72,7 @@
             this.cmbStartStation.Name = "cmbStartStation";
             this.cmbStartStation.Size = new System.Drawing.Size(149, 24);
             this.cmbStartStation.TabIndex = 2;
-            this.cmbStartStation.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbStartStation_KeyPress);
+            this.cmbStartStation.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbStartStation_KeyDown);
             // 
             // cmbEndStation
             // 
@@ -81,6 +81,7 @@
             this.cmbEndStation.Name = "cmbEndStation";
             this.cmbEndStation.Size = new System.Drawing.Size(139, 24);
             this.cmbEndStation.TabIndex = 3;
+            this.cmbEndStation.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbEndStation_KeyDown);
             // 
             // btnConnections
             // 
@@ -90,6 +91,7 @@
             this.btnConnections.TabIndex = 4;
             this.btnConnections.Text = "Verbindungen";
             this.btnConnections.UseVisualStyleBackColor = true;
+            this.btnConnections.Click += new System.EventHandler(this.btnConnections_Click);
             // 
             // btnDeparture
             // 
@@ -99,6 +101,7 @@
             this.btnDeparture.TabIndex = 5;
             this.btnDeparture.Text = "Abfahrtstabelle";
             this.btnDeparture.UseVisualStyleBackColor = true;
+            this.btnDeparture.Click += new System.EventHandler(this.btnDeparture_Click);
             // 
             // dateTimePicker1
             // 
