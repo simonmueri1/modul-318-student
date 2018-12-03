@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.lblStartStation = new System.Windows.Forms.Label();
             this.lblEndStation = new System.Windows.Forms.Label();
             this.cmbStartStation = new System.Windows.Forms.ComboBox();
@@ -35,14 +36,16 @@
             this.btnConnections = new System.Windows.Forms.Button();
             this.btnDeparture = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.cmbTime = new System.Windows.Forms.ComboBox();
             this.lblDate = new System.Windows.Forms.Label();
             this.lblTime = new System.Windows.Forms.Label();
             this.rdbDeparture = new System.Windows.Forms.RadioButton();
             this.rdbArrival = new System.Windows.Forms.RadioButton();
             this.grbSearch = new System.Windows.Forms.GroupBox();
             this.grbResult = new System.Windows.Forms.GroupBox();
-            this.lsbResult = new System.Windows.Forms.ListBox();
+            this.lsbResult1 = new System.Windows.Forms.ListBox();
+            this.btnStartMap = new System.Windows.Forms.Button();
+            this.btnEndMap = new System.Windows.Forms.Button();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.grbSearch.SuspendLayout();
             this.grbResult.SuspendLayout();
             this.SuspendLayout();
@@ -59,7 +62,7 @@
             // lblEndStation
             // 
             this.lblEndStation.AutoSize = true;
-            this.lblEndStation.Location = new System.Drawing.Point(295, 44);
+            this.lblEndStation.Location = new System.Drawing.Point(282, 44);
             this.lblEndStation.Name = "lblEndStation";
             this.lblEndStation.Size = new System.Drawing.Size(75, 17);
             this.lblEndStation.TabIndex = 1;
@@ -70,16 +73,16 @@
             this.cmbStartStation.FormattingEnabled = true;
             this.cmbStartStation.Location = new System.Drawing.Point(19, 79);
             this.cmbStartStation.Name = "cmbStartStation";
-            this.cmbStartStation.Size = new System.Drawing.Size(149, 24);
+            this.cmbStartStation.Size = new System.Drawing.Size(170, 24);
             this.cmbStartStation.TabIndex = 2;
             this.cmbStartStation.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbStartStation_KeyDown);
             // 
             // cmbEndStation
             // 
             this.cmbEndStation.FormattingEnabled = true;
-            this.cmbEndStation.Location = new System.Drawing.Point(298, 79);
+            this.cmbEndStation.Location = new System.Drawing.Point(285, 79);
             this.cmbEndStation.Name = "cmbEndStation";
-            this.cmbEndStation.Size = new System.Drawing.Size(139, 24);
+            this.cmbEndStation.Size = new System.Drawing.Size(170, 24);
             this.cmbEndStation.TabIndex = 3;
             this.cmbEndStation.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbEndStation_KeyDown);
             // 
@@ -109,14 +112,6 @@
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(240, 22);
             this.dateTimePicker1.TabIndex = 6;
-            // 
-            // cmbTime
-            // 
-            this.cmbTime.FormattingEnabled = true;
-            this.cmbTime.Location = new System.Drawing.Point(298, 172);
-            this.cmbTime.Name = "cmbTime";
-            this.cmbTime.Size = new System.Drawing.Size(121, 24);
-            this.cmbTime.TabIndex = 7;
             // 
             // lblDate
             // 
@@ -160,6 +155,9 @@
             // 
             // grbSearch
             // 
+            this.grbSearch.Controls.Add(this.dateTimePicker2);
+            this.grbSearch.Controls.Add(this.btnEndMap);
+            this.grbSearch.Controls.Add(this.btnStartMap);
             this.grbSearch.Controls.Add(this.dateTimePicker1);
             this.grbSearch.Controls.Add(this.btnConnections);
             this.grbSearch.Controls.Add(this.btnDeparture);
@@ -167,7 +165,6 @@
             this.grbSearch.Controls.Add(this.rdbArrival);
             this.grbSearch.Controls.Add(this.lblDate);
             this.grbSearch.Controls.Add(this.cmbStartStation);
-            this.grbSearch.Controls.Add(this.cmbTime);
             this.grbSearch.Controls.Add(this.lblTime);
             this.grbSearch.Controls.Add(this.lblStartStation);
             this.grbSearch.Controls.Add(this.cmbEndStation);
@@ -181,7 +178,7 @@
             // 
             // grbResult
             // 
-            this.grbResult.Controls.Add(this.lsbResult);
+            this.grbResult.Controls.Add(this.lsbResult1);
             this.grbResult.Location = new System.Drawing.Point(39, 255);
             this.grbResult.Name = "grbResult";
             this.grbResult.Size = new System.Drawing.Size(719, 252);
@@ -189,22 +186,58 @@
             this.grbResult.TabStop = false;
             this.grbResult.Text = "Ergebnisse";
             // 
-            // lsbResult
+            // lsbResult1
             // 
-            this.lsbResult.FormattingEnabled = true;
-            this.lsbResult.ItemHeight = 16;
-            this.lsbResult.Location = new System.Drawing.Point(19, 38);
-            this.lsbResult.Name = "lsbResult";
-            this.lsbResult.Size = new System.Drawing.Size(665, 196);
-            this.lsbResult.TabIndex = 0;
+            this.lsbResult1.FormattingEnabled = true;
+            this.lsbResult1.ItemHeight = 16;
+            this.lsbResult1.Location = new System.Drawing.Point(19, 38);
+            this.lsbResult1.Margin = new System.Windows.Forms.Padding(10);
+            this.lsbResult1.Name = "lsbResult1";
+            this.lsbResult1.Size = new System.Drawing.Size(665, 196);
+            this.lsbResult1.TabIndex = 0;
+            // 
+            // btnStartMap
+            // 
+            this.btnStartMap.Location = new System.Drawing.Point(195, 71);
+            this.btnStartMap.Name = "btnStartMap";
+            this.btnStartMap.Size = new System.Drawing.Size(69, 38);
+            this.btnStartMap.TabIndex = 12;
+            this.btnStartMap.Text = "Map";
+            this.btnStartMap.UseVisualStyleBackColor = true;
+            this.btnStartMap.Click += new System.EventHandler(this.btnStartMap_Click);
+            // 
+            // btnEndMap
+            // 
+            this.btnEndMap.Location = new System.Drawing.Point(461, 71);
+            this.btnEndMap.Name = "btnEndMap";
+            this.btnEndMap.Size = new System.Drawing.Size(75, 38);
+            this.btnEndMap.TabIndex = 13;
+            this.btnEndMap.Text = "Map";
+            this.btnEndMap.UseVisualStyleBackColor = true;
+            this.btnEndMap.Click += new System.EventHandler(this.btnEndMap_Click);
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.CustomFormat = "hh:mm";
+            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.dateTimePicker2.Location = new System.Drawing.Point(298, 174);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.ShowUpDown = true;
+            this.dateTimePicker2.Size = new System.Drawing.Size(91, 22);
+            this.dateTimePicker2.TabIndex = 14;
+            this.dateTimePicker2.UseWaitCursor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 519);
+            this.ClientSize = new System.Drawing.Size(800, 531);
             this.Controls.Add(this.grbResult);
             this.Controls.Add(this.grbSearch);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(818, 578);
+            this.MinimumSize = new System.Drawing.Size(818, 578);
             this.Name = "Form1";
             this.Text = "ÖV-App";
             this.grbSearch.ResumeLayout(false);
@@ -223,14 +256,16 @@
         private System.Windows.Forms.Button btnConnections;
         private System.Windows.Forms.Button btnDeparture;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.ComboBox cmbTime;
         private System.Windows.Forms.Label lblDate;
         private System.Windows.Forms.Label lblTime;
         private System.Windows.Forms.RadioButton rdbDeparture;
         private System.Windows.Forms.RadioButton rdbArrival;
         private System.Windows.Forms.GroupBox grbSearch;
         private System.Windows.Forms.GroupBox grbResult;
-        private System.Windows.Forms.ListBox lsbResult;
+        private System.Windows.Forms.ListBox lsbResult1;
+        private System.Windows.Forms.Button btnStartMap;
+        private System.Windows.Forms.Button btnEndMap;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
     }
 }
 
