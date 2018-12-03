@@ -70,13 +70,22 @@ namespace SwissTransportApp
                 MessageBox.Show(cmbEndStation.Text + " als Station nicht gefunden");
                 return;
             }
-            
-            connections = transport.GetConnections(cmbStartStation.Text, cmbEndStation.Text);
+
+            DateTime dateTime = dateTimePicker1.Value.Date;
+            dateTime += dateTimePicker2.Value.TimeOfDay;
+            bool isArrivalTime = false;
+
+            if (rdbArrival.Checked)
+            {
+                isArrivalTime = true;
+            }
+
+            connections = transport.GetConnections(cmbStartStation.Text, cmbEndStation.Text, dateTime, isArrivalTime);
             lsbResult1.Items.Clear();
 
             foreach (Connection elem in connections.ConnectionList)
             {
-                lsbResult1.Items.Add(elem.From.Station.Name + "(" + elem.From.Departure.ToString("hh:mm") + ")\t" + elem.To.Station.Name + "\t" + elem.To.Arrival.ToString("hh:mm") + " " + elem.Duration.Remove(0, 5));
+                lsbResult1.Items.Add(elem.From.Station.Name + "(" + elem.From.Departure.ToString("HH:mm") + ")\t" + elem.To.Station.Name + "(" + elem.To.Arrival.ToString("HH:mm") + ")\t" + elem.Duration.Remove(0, 3));
             }
         }
 

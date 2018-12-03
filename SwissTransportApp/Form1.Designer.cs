@@ -134,6 +134,7 @@
             // rdbDeparture
             // 
             this.rdbDeparture.AutoSize = true;
+            this.rdbDeparture.Checked = true;
             this.rdbDeparture.Location = new System.Drawing.Point(467, 143);
             this.rdbDeparture.Name = "rdbDeparture";
             this.rdbDeparture.Size = new System.Drawing.Size(75, 21);
@@ -149,7 +150,6 @@
             this.rdbArrival.Name = "rdbArrival";
             this.rdbArrival.Size = new System.Drawing.Size(77, 21);
             this.rdbArrival.TabIndex = 11;
-            this.rdbArrival.TabStop = true;
             this.rdbArrival.Text = "Ankunft";
             this.rdbArrival.UseVisualStyleBackColor = true;
             // 
@@ -218,7 +218,7 @@
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.CustomFormat = "hh:mm";
+            this.dateTimePicker2.CustomFormat = "HH:mm";
             this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.dateTimePicker2.Location = new System.Drawing.Point(298, 174);
@@ -226,7 +226,7 @@
             this.dateTimePicker2.ShowUpDown = true;
             this.dateTimePicker2.Size = new System.Drawing.Size(91, 22);
             this.dateTimePicker2.TabIndex = 14;
-            this.dateTimePicker2.UseWaitCursor = true;
+            this.dateTimePicker2.TabStop = false;
             // 
             // Form1
             // 
