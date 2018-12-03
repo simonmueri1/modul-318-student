@@ -33,7 +33,7 @@ namespace SwissTransportApp
 
         public Station FindStation(string name)
         {
-            return FindStations(name).First<Station>();
+            return FindStations(name).First();
         }
     }
 }

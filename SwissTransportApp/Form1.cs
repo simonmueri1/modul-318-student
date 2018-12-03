@@ -76,7 +76,7 @@ namespace SwissTransportApp
 
             foreach (Connection elem in connections.ConnectionList)
             {
-                lsbResult1.Items.Add(elem.From.Station.Name + " " + elem.From.DepartureTimestamp + elem.From.Departure + "\t" + elem.To.Station.Name + "\t" + elem.From.ArrivalTimestamp + elem.Duration);
+                lsbResult1.Items.Add(elem.From.Station.Name + "(" + elem.From.Departure.ToString("hh:mm") + ")\t" + elem.To.Station.Name + "\t" + elem.To.Arrival.ToString("hh:mm") + " " + elem.Duration.Remove(0, 5));
             }
         }
 
