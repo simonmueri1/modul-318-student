@@ -1,12 +1,6 @@
 ﻿using SwissTransport;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SwissTransportApp
@@ -138,7 +132,6 @@ namespace SwissTransportApp
 
         private void btnStartMap_Click(object sender, EventArgs e)
         {
-            var input = cmbStartStation.Text;
             StationFinder stationFinder = new StationFinder();
 
             if (!stationFinder.IsStationAvailable(cmbStartStation.Text))
@@ -153,7 +146,6 @@ namespace SwissTransportApp
 
         private void btnEndMap_Click(object sender, EventArgs e)
         {
-            var input = cmbEndStation.Text;
             StationFinder stationFinder = new StationFinder();
 
             if (!stationFinder.IsStationAvailable(cmbEndStation.Text))
