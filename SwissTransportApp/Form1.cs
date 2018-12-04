@@ -17,6 +17,7 @@ namespace SwissTransportApp
         {
             CheckInternet checkInternet = new CheckInternet();
             bool internetAvaiability = checkInternet.checkForInternetConnection();
+
             if (internetAvaiability == false)
             {
                 MessageBox.Show("Keine Internetverbindung", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -51,6 +52,7 @@ namespace SwissTransportApp
         {
             if (e.KeyCode != Keys.Enter)
                 return;
+
             cmbEndStation.Items.Clear();
 
             var input = cmbEndStation.Text;
@@ -76,13 +78,13 @@ namespace SwissTransportApp
 
             if (!stationFinder.IsStationAvailable(cmbStartStation.Text))
             {
-                MessageBox.Show(cmbStartStation.Text + " als Station nicht gefunden");
+                MessageBox.Show("Station: \"" + cmbStartStation.Text + "\" nicht gefunden.");
                 return;
             }
             
             if (!stationFinder.IsStationAvailable(cmbEndStation.Text))
             {
-                MessageBox.Show(cmbEndStation.Text + " als Station nicht gefunden");
+                MessageBox.Show("Station: \"" + cmbEndStation.Text + "\" nicht gefunden.");
                 return;
             }
 
@@ -113,7 +115,7 @@ namespace SwissTransportApp
 
             if (!stationFinder.IsStationAvailable(cmbStartStation.Text))
             {
-                MessageBox.Show(cmbStartStation.Text + " Station nicht gefunden");
+                MessageBox.Show("Station: \"" + cmbStartStation.Text + "\" nicht gefunden.");
                 return;
             }
 
@@ -124,13 +126,13 @@ namespace SwissTransportApp
             
             lsbResult1.Items.Clear();
             lsbResult1.Items.Add("Abfahrten ab: " + transport.GetStationBoard(cmbStartStation.Text, id, dateTime).Station.Name + "\n");
+
             foreach(StationBoard elem in transport.GetStationBoard(cmbStartStation.Text, id, dateTime).Entries)
             {
                 string paddedTo = elem.To.PadRight(25);
                 string paddedInfo = elem.Category.ToString() + elem.Number.ToString();
                 paddedInfo = paddedInfo.PadRight(20);
                 lsbResult1.Items.Add(paddedTo + paddedInfo + elem.Stop.Departure + "\n");
-
             }
         }
 
@@ -141,7 +143,7 @@ namespace SwissTransportApp
 
             if (!stationFinder.IsStationAvailable(cmbStartStation.Text))
             {
-                MessageBox.Show(cmbStartStation.Text + " Station nicht gefunden");
+                MessageBox.Show("Station: \"" + cmbStartStation.Text + "\" nicht gefunden.");
                 return;
             }
 
@@ -156,7 +158,7 @@ namespace SwissTransportApp
 
             if (!stationFinder.IsStationAvailable(cmbEndStation.Text))
             {
-                MessageBox.Show(cmbEndStation.Text + " Station nicht gefunden");
+                MessageBox.Show("Station: \"" + cmbEndStation.Text + "\" nicht gefunden.");
                 return;
             }
             
