@@ -65,7 +65,7 @@
             this.lblEndStation.Location = new System.Drawing.Point(282, 27);
             this.lblEndStation.Name = "lblEndStation";
             this.lblEndStation.Size = new System.Drawing.Size(78, 18);
-            this.lblEndStation.TabIndex = 1;
+            this.lblEndStation.TabIndex = 0;
             this.lblEndStation.Text = "Endstation";
             // 
             // cmbStartStation
@@ -74,7 +74,7 @@
             this.cmbStartStation.Location = new System.Drawing.Point(19, 58);
             this.cmbStartStation.Name = "cmbStartStation";
             this.cmbStartStation.Size = new System.Drawing.Size(170, 26);
-            this.cmbStartStation.TabIndex = 2;
+            this.cmbStartStation.TabIndex = 1;
             this.cmbStartStation.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbStartStation_KeyDown);
             // 
             // cmbEndStation
@@ -91,7 +91,7 @@
             this.btnConnections.Location = new System.Drawing.Point(570, 117);
             this.btnConnections.Name = "btnConnections";
             this.btnConnections.Size = new System.Drawing.Size(114, 40);
-            this.btnConnections.TabIndex = 4;
+            this.btnConnections.TabIndex = 9;
             this.btnConnections.Text = "Verbindungen";
             this.btnConnections.UseVisualStyleBackColor = true;
             this.btnConnections.Click += new System.EventHandler(this.btnConnections_Click);
@@ -101,7 +101,7 @@
             this.btnDeparture.Location = new System.Drawing.Point(570, 163);
             this.btnDeparture.Name = "btnDeparture";
             this.btnDeparture.Size = new System.Drawing.Size(114, 42);
-            this.btnDeparture.TabIndex = 5;
+            this.btnDeparture.TabIndex = 10;
             this.btnDeparture.Text = "Abfahrtstabelle";
             this.btnDeparture.UseVisualStyleBackColor = true;
             this.btnDeparture.Click += new System.EventHandler(this.btnDeparture_Click);
@@ -111,7 +111,7 @@
             this.dateTimePicker1.Location = new System.Drawing.Point(19, 174);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(245, 24);
-            this.dateTimePicker1.TabIndex = 6;
+            this.dateTimePicker1.TabIndex = 5;
             // 
             // lblDate
             // 
@@ -119,7 +119,7 @@
             this.lblDate.Location = new System.Drawing.Point(16, 143);
             this.lblDate.Name = "lblDate";
             this.lblDate.Size = new System.Drawing.Size(52, 18);
-            this.lblDate.TabIndex = 8;
+            this.lblDate.TabIndex = 0;
             this.lblDate.Text = "Datum";
             // 
             // lblTime
@@ -128,7 +128,7 @@
             this.lblTime.Location = new System.Drawing.Point(282, 143);
             this.lblTime.Name = "lblTime";
             this.lblTime.Size = new System.Drawing.Size(32, 18);
-            this.lblTime.TabIndex = 9;
+            this.lblTime.TabIndex = 0;
             this.lblTime.Text = "Zeit";
             // 
             // rdbDeparture
@@ -138,7 +138,7 @@
             this.rdbDeparture.Location = new System.Drawing.Point(427, 147);
             this.rdbDeparture.Name = "rdbDeparture";
             this.rdbDeparture.Size = new System.Drawing.Size(75, 22);
-            this.rdbDeparture.TabIndex = 10;
+            this.rdbDeparture.TabIndex = 7;
             this.rdbDeparture.TabStop = true;
             this.rdbDeparture.Text = "Abfahrt";
             this.rdbDeparture.UseVisualStyleBackColor = true;
@@ -149,7 +149,7 @@
             this.rdbArrival.Location = new System.Drawing.Point(427, 174);
             this.rdbArrival.Name = "rdbArrival";
             this.rdbArrival.Size = new System.Drawing.Size(78, 22);
-            this.rdbArrival.TabIndex = 11;
+            this.rdbArrival.TabIndex = 8;
             this.rdbArrival.Text = "Ankunft";
             this.rdbArrival.UseVisualStyleBackColor = true;
             // 
@@ -173,7 +173,7 @@
             this.grbSearch.Location = new System.Drawing.Point(39, 12);
             this.grbSearch.Name = "grbSearch";
             this.grbSearch.Size = new System.Drawing.Size(719, 220);
-            this.grbSearch.TabIndex = 12;
+            this.grbSearch.TabIndex = 0;
             this.grbSearch.TabStop = false;
             this.grbSearch.Text = "Eingaben";
             // 
@@ -186,7 +186,7 @@
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.ShowUpDown = true;
             this.dateTimePicker2.Size = new System.Drawing.Size(91, 24);
-            this.dateTimePicker2.TabIndex = 14;
+            this.dateTimePicker2.TabIndex = 6;
             this.dateTimePicker2.TabStop = false;
             // 
             // btnEndMap
@@ -194,7 +194,7 @@
             this.btnEndMap.Location = new System.Drawing.Point(461, 50);
             this.btnEndMap.Name = "btnEndMap";
             this.btnEndMap.Size = new System.Drawing.Size(75, 38);
-            this.btnEndMap.TabIndex = 13;
+            this.btnEndMap.TabIndex = 4;
             this.btnEndMap.Text = "Karte";
             this.btnEndMap.UseVisualStyleBackColor = true;
             this.btnEndMap.Click += new System.EventHandler(this.btnEndMap_Click);
@@ -204,7 +204,7 @@
             this.btnStartMap.Location = new System.Drawing.Point(195, 50);
             this.btnStartMap.Name = "btnStartMap";
             this.btnStartMap.Size = new System.Drawing.Size(69, 38);
-            this.btnStartMap.TabIndex = 12;
+            this.btnStartMap.TabIndex = 2;
             this.btnStartMap.Text = "Karte";
             this.btnStartMap.UseVisualStyleBackColor = true;
             this.btnStartMap.Click += new System.EventHandler(this.btnStartMap_Click);
@@ -215,7 +215,7 @@
             this.grbResult.Location = new System.Drawing.Point(39, 255);
             this.grbResult.Name = "grbResult";
             this.grbResult.Size = new System.Drawing.Size(719, 252);
-            this.grbResult.TabIndex = 13;
+            this.grbResult.TabIndex = 0;
             this.grbResult.TabStop = false;
             this.grbResult.Text = "Ergebnisse";
             // 
