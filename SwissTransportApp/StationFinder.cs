@@ -5,12 +5,7 @@ using System.Linq;
 namespace SwissTransportApp
 {
     class StationFinder
-    {
-        public StationFinder()
-        {
-
-        }
-         
+    {    
         /// <summary>
         /// Returns a List of Stations With the Beginning of the ComboBox input
         /// </summary>

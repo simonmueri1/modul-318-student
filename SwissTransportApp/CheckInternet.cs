@@ -4,12 +4,7 @@ namespace SwissTransportApp
 {
     class CheckInternet
     {
-        public CheckInternet()
-        {
-
-        }
-
-        public bool checkForInternetConnection()
+        public bool CheckForInternetConnection()
         {
             try
             {
