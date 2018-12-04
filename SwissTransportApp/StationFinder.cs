@@ -13,13 +13,23 @@ namespace SwissTransportApp
         {
 
         }
-
+         
+        /// <summary>
+        /// Returns a List of Stations With the Beginning of the ComboBox input
+        /// </summary>
+        /// <param name="input">Input from ComboBox</param>
+        /// <returns>List of Station</returns>
         public List<Station> FindStations(string input)
         {
             ITransport transport = new Transport();
             return transport.GetStations(input).StationList;
         }
 
+        /// <summary>
+        /// Checks if Station exists
+        /// </summary>
+        /// <param name="station">Station Name</param>
+        /// <returns>bool</returns>
         public bool IsStationAvailable(string station)
         {   
             StationFinder stationFinder = new StationFinder();
@@ -31,6 +41,11 @@ namespace SwissTransportApp
             return false;
         }
 
+        /// <summary>
+        /// Returns First Station of List with Name from ComboBox
+        /// </summary>
+        /// <param name="name">ComboBox input</param>
+        /// <returns>Station</returns>
         public Station FindStation(string name)
         {
             return FindStations(name).First();

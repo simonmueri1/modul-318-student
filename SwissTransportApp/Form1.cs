@@ -23,6 +23,7 @@ namespace SwissTransportApp
         {
             if (e.KeyCode != Keys.Enter)
                 return;
+
             cmbStartStation.Items.Clear();
 
             var input = cmbStartStation.Text;
@@ -33,6 +34,9 @@ namespace SwissTransportApp
             {
                 cmbStartStation.Items.Add(element.Name);
             }
+
+            cmbStartStation.DroppedDown = true;
+            e.Handled = true;
         }
 
         private void cmbEndStation_KeyDown(object sender, KeyEventArgs e)
@@ -85,7 +89,9 @@ namespace SwissTransportApp
 
             foreach (Connection elem in connections.ConnectionList)
             {
-                lsbResult1.Items.Add(elem.From.Station.Name + "(" + elem.From.Departure.ToString("HH:mm") + ")\t" + elem.To.Station.Name + "(" + elem.To.Arrival.ToString("HH:mm") + ")\t" + elem.Duration.Remove(0, 3));
+                string paddedFrom = elem.From.Station.Name + "(" + elem.From.Departure.ToString("HH:mm") + ")".PadRight(10) + "-".PadRight(10);
+                string paddedTo = elem.To.Station.Name + "(" + elem.To.Arrival.ToString("HH:mm") + ")".PadRight(10);
+                lsbResult1.Items.Add(paddedFrom + paddedTo + elem.Duration.Remove(0, 3).Remove(5, 3));
             }
         }
 
@@ -94,20 +100,26 @@ namespace SwissTransportApp
             ITransport transport = new Transport();
             StationFinder stationFinder = new StationFinder();
 
-            Station station = stationFinder.FindStation(cmbStartStation.Text);
-            string id = station.Id;
-            
             if (!stationFinder.IsStationAvailable(cmbStartStation.Text))
             {
-                MessageBox.Show(cmbStartStation.Text + " als Station nicht gefunden");
+                MessageBox.Show(cmbStartStation.Text + " Station nicht gefunden");
                 return;
             }
+
+            Station station = stationFinder.FindStation(cmbStartStation.Text);
+            string id = station.Id;
+            DateTime dateTime = dateTimePicker1.Value.Date;
+            dateTime += dateTimePicker2.Value.TimeOfDay;
             
             lsbResult1.Items.Clear();
-            lsbResult1.Items.Add("Abfahrten ab: " + transport.GetStationBoard(cmbStartStation.Text, id).Station.Name);
-            foreach(StationBoard elem in transport.GetStationBoard(cmbStartStation.Text, id).Entries)
+            lsbResult1.Items.Add("Abfahrten ab: " + transport.GetStationBoard(cmbStartStation.Text, id, dateTime).Station.Name);
+            foreach(StationBoard elem in transport.GetStationBoard(cmbStartStation.Text, id, dateTime).Entries)
             {
-                lsbResult1.Items.Add(elem.To + "\t\t\t" + elem.Category + elem.Number + "\t\t" + elem.Stop.Departure + "\n");
+                string paddedTo = elem.To.PadRight(25);
+                string paddedInfo = elem.Category.ToString() + elem.Number.ToString();
+                paddedInfo = paddedInfo.PadRight(20);
+                lsbResult1.Items.Add(paddedTo + paddedInfo + elem.Stop.Departure + "\n");
+
             }
         }
 
@@ -115,14 +127,14 @@ namespace SwissTransportApp
         {
             var input = cmbStartStation.Text;
             StationFinder stationFinder = new StationFinder();
-            Station station = stationFinder.FindStation(cmbStartStation.Text);
 
             if (!stationFinder.IsStationAvailable(cmbStartStation.Text))
             {
-                MessageBox.Show(cmbStartStation.Text + " als Station nicht gefunden");
+                MessageBox.Show(cmbStartStation.Text + " Station nicht gefunden");
                 return;
             }
-            
+
+            Station station = stationFinder.FindStation(cmbStartStation.Text);
             System.Diagnostics.Process.Start("http://www.google.com/maps/place/" + station.Coordinate.XCoordinate.ToString().Replace(",", ".") + "," + station.Coordinate.YCoordinate.ToString().Replace(",", "."));
         }
 
@@ -130,14 +142,14 @@ namespace SwissTransportApp
         {
             var input = cmbEndStation.Text;
             StationFinder stationFinder = new StationFinder();
-            Station station = stationFinder.FindStation(cmbEndStation.Text);
 
             if (!stationFinder.IsStationAvailable(cmbEndStation.Text))
             {
-                MessageBox.Show(cmbEndStation.Text + " als Station nicht gefunden");
+                MessageBox.Show(cmbEndStation.Text + " Station nicht gefunden");
                 return;
             }
-
+            
+            Station station = stationFinder.FindStation(cmbEndStation.Text);
             System.Diagnostics.Process.Start("http://www.google.com/maps/place/" + station.Coordinate.XCoordinate.ToString().Replace(",", ".") + "," + station.Coordinate.YCoordinate.ToString().Replace(",", "."));
         }
     }
