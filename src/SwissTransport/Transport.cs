@@ -26,9 +26,7 @@ namespace SwissTransport
 
         public StationBoardRoot GetStationBoard(string station, string id, DateTime dateTime)
         {
-            var date = dateTime.Date;
-            var time = dateTime.TimeOfDay;
-            var request = CreateWebRequest($"http://transport.opendata.ch/v1/stationboard?Station={station}&id={id}&date={date}&time={time}");
+            var request = CreateWebRequest($"http://transport.opendata.ch/v1/stationboard?Station={station}&id={id}&datetime={dateTime:yyyy-MM-dd HH:mm}");
             var response = request.GetResponse();
             var responseStream = response.GetResponseStream();
 

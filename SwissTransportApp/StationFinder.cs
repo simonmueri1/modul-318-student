@@ -22,7 +22,7 @@ namespace SwissTransportApp
         public List<Station> FindStations(string input)
         {
             ITransport transport = new Transport();
-            return transport.GetStations(input).StationList;
+            return transport.GetStations(input).StationList.Where(x => x.Id != null).ToList();
         }
 
         /// <summary>

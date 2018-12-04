@@ -15,6 +15,14 @@ namespace SwissTransportApp
     {
         public Form1()
         {
+            CheckInternet checkInternet = new CheckInternet();
+            bool internetAvaiability = checkInternet.checkForInternetConnection();
+            if (internetAvaiability == false)
+            {
+                MessageBox.Show("Keine Internetverbindung", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Environment.Exit(0);
+            }
+            
             InitializeComponent();
             CenterToScreen();
         }
@@ -53,6 +61,9 @@ namespace SwissTransportApp
             {
                 cmbEndStation.Items.Add(element.Name);
             }
+
+            cmbEndStation.DroppedDown = true;
+            e.Handled = true;
         }
 
         private void btnConnections_Click(object sender, EventArgs e)
@@ -112,7 +123,7 @@ namespace SwissTransportApp
             dateTime += dateTimePicker2.Value.TimeOfDay;
             
             lsbResult1.Items.Clear();
-            lsbResult1.Items.Add("Abfahrten ab: " + transport.GetStationBoard(cmbStartStation.Text, id, dateTime).Station.Name);
+            lsbResult1.Items.Add("Abfahrten ab: " + transport.GetStationBoard(cmbStartStation.Text, id, dateTime).Station.Name + "\n");
             foreach(StationBoard elem in transport.GetStationBoard(cmbStartStation.Text, id, dateTime).Entries)
             {
                 string paddedTo = elem.To.PadRight(25);
